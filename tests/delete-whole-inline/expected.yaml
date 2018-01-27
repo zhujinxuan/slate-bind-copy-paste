@@ -1,0 +1,27 @@
+document:
+  nodes:
+    - object: block
+      type: paragraph
+      nodes:
+      - object: text
+        leaves: 
+        - text: ""
+      - object: inline
+        type: inlineParent
+        nodes:
+          - object: text
+            leaves: 
+            - text: "Before"
+          - object: inline
+            type: just-a-inline
+            nodes:
+            - object: text
+              leaves: 
+              - text: ""
+          - object: text
+            leaves: 
+            - text: "After"
+      - object: text
+        leaves: 
+        - text: ""
+

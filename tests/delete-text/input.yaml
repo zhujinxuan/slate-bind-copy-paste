@@ -1,0 +1,37 @@
+document:
+  nodes:
+    - object: block
+      type: paragraph
+      nodes:
+      - object: inline
+        type: inlineParent
+        nodes:
+          - object: text
+            leaves: 
+            - text: "Before"
+          - object: inline
+            type: just-a-inline
+            nodes:
+            - object: text
+              key: '_anchor_'
+              leaves: 
+              - text: "Anchor"
+            - object: text
+              leaves: 
+              - text: "After Anchor"
+          - object: inline
+            type: just-a-inline
+            nodes:
+            - object: text
+              leaves: 
+              - text: "Middle"
+          - object: inline
+            type: just-a-inline
+            nodes:
+            - object: text
+              key: '_focus_'
+              leaves: 
+              - text: "Focus"
+          - object: text
+            leaves: 
+            - text: "After"

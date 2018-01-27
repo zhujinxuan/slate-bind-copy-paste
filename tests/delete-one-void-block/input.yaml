@@ -1,0 +1,22 @@
+document:
+  nodes:
+    - object: block
+      type: paragraph
+      nodes:
+        - object: text
+          leaves: 
+          - text: "Before"
+    - object: block
+      type: image
+      key: '_cursor_'
+      isVoid: true
+      nodes:
+        - object: text
+          leaves: 
+          - text: " "
+    - object: block
+      type: paragraph
+      nodes:
+        - object: text
+          leaves: 
+          - text: "After"

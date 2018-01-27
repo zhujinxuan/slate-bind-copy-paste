@@ -1,0 +1,5 @@
+[ignore]
+.*/slate-bad-table/dist/.*
+[options]
+emoji=true
+esproposal.decorators=ignore
