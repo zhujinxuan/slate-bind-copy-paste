@@ -1,0 +1,51 @@
+document:
+  nodes:
+    - object: block
+      type: fragment
+      nodes:
+      - object: block
+        type: quote
+        nodes:
+          - object: text
+            leaves: 
+            - text: "Before"
+      - object: block
+        type: image
+        isVoid: true
+        nodes:
+          - object: text
+            leaves: 
+            - text: " "
+      - object: block
+        type: quote
+        nodes:
+          - object: text
+            leaves: 
+            - text: "After"
+    - object: block
+      type: quote
+      nodes:
+        - object: text
+          leaves: 
+          - text: "Before"
+    - object: block
+      type: image
+      isVoid: true
+      nodes:
+        - object: text
+          leaves: 
+          - text: " "
+    - object: block
+      type: quote
+      nodes:
+        - object: text
+          leaves: 
+          - text: "After"
+    - object: block
+      type: image
+      isVoid: true
+      key: '_cursor_'
+      nodes:
+        - object: text
+          leaves: 
+          - text: " "

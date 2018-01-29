@@ -4,11 +4,23 @@ document:
       type: fragment
       nodes:
       - object: block
-        type: quote
+        type: table
         nodes:
-          - object: text
-            leaves: 
-            - text: "Before"
+          - object: block
+            type: table-row
+            nodes:
+            - object: block
+              type: table-cell
+              nodes:
+              - object: text
+                leaves: 
+                - text: "Before"
+            - object: block
+              type: table-cell
+              nodes:
+              - object: text
+                leaves: 
+                - text: "Before Two"
       - object: block
         type: image
         isVoid: true
@@ -17,11 +29,8 @@ document:
             leaves: 
             - text: " "
       - object: block
-        type: quote
-        nodes:
-          - object: text
-            leaves: 
-            - text: "After"
+        type: image
+        isVoid: true
     - object: block
       type: paragraph
       key: '_cursor_'
