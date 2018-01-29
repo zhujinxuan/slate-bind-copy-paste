@@ -6,6 +6,6 @@ export default function(plugin, change) {
     const range = Range.create()
         .moveAnchorToStartOf(cursorNode)
         .moveFocusToEndOf(cursorNode);
-    const deleteAtRange = plugin.deleteAtRange.generate();
+    const { deleteAtRange } = plugin;
     return deleteAtRange(change, range);
 }

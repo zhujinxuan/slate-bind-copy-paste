@@ -9,6 +9,6 @@ export default function(plugin, change) {
         .moveAnchor(1)
         .moveFocusToEndOf(focusNode)
         .moveFocus(-1);
-    const deleteAtRange = plugin.deleteAtRange.generate();
+    const { deleteAtRange } = plugin;
     return deleteAtRange(change, range);
 }
