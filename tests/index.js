@@ -4,7 +4,17 @@ import path from 'path';
 import { Value } from 'slate';
 import readMetadata from 'read-metadata';
 
-import plugin from '../lib';
+import {
+    insertFragmentAtRange as insertPlugin,
+    deleteAtRange as deletePlugin,
+    getFragmentAtRange as getPlugin
+} from '../lib';
+
+const plugin = {
+    insertFragmentAtRange: insertPlugin.generate(),
+    deleteAtRange: deletePlugin.generate(),
+    getFragmentAtRange: getPlugin.generate()
+};
 
 function deserializeValue(json) {
     return Value.fromJSON({ ...json }, { normalize: false });
