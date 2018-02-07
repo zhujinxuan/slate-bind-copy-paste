@@ -1,0 +1,26 @@
+document:
+  nodes:
+    - object: block
+      type: paragraph
+      nodes:
+      - object: text
+        key: '_anchor_'
+        leaves: 
+        - text: ""
+    - object: block
+      type: paragraph
+      nodes:
+      - object: text
+        leaves: 
+        - text: ""
+      - object: inline
+        type: just-a-inline
+        key: '_focus_'
+        isVoid: true
+        nodes:
+        - object: text
+          leaves: 
+          - text: " "
+      - object: text
+        leaves: 
+        - text: "After"
