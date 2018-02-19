@@ -1,11 +1,37 @@
-import { Range } from 'slate';
+/** @jsx h */
 
-export default function(plugin, change) {
-    const { document } = change.value;
-    const cursorNode = document.getDescendant('_cursor_');
-    const range = Range.create()
-        .moveAnchorToStartOf(cursorNode)
-        .moveFocusToEndOf(cursorNode);
+import h from '../h';
+
+export function runChange(plugin, change) {
     const { deleteAtRange } = plugin;
-    return deleteAtRange(change, range);
+    deleteAtRange(change, change.value.selection);
+    return change;
 }
+export const input = (
+    <value>
+        <document>
+            <paragraph>Before</paragraph>
+            <image>
+                {' '}
+                <anchor />
+            </image>
+            <image />
+            <paragraph>
+                {' '}
+                <focus />After
+            </paragraph>
+        </document>
+    </value>
+);
+export const output = (
+    <value>
+        <document>
+            <paragraph>
+                Before<anchor />
+            </paragraph>
+            <paragraph>
+                <focus />After
+            </paragraph>
+        </document>
+    </value>
+);

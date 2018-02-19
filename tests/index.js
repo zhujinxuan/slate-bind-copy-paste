@@ -1,8 +1,6 @@
-import expect from 'expect';
 import fs from 'fs';
 import path from 'path';
-import { Value } from 'slate';
-import readMetadata from 'read-metadata';
+import assert from 'assert';
 
 import {
     insertFragmentAtRange as insertPlugin,
@@ -16,10 +14,6 @@ const plugin = {
     getFragmentAtRange: getPlugin.generate()
 };
 
-function deserializeValue(json) {
-    return Value.fromJSON({ ...json }, { normalize: false });
-}
-
 describe('slate-bind-copy-paste', () => {
     const tests = fs.readdirSync(__dirname);
 
@@ -28,22 +22,16 @@ describe('slate-bind-copy-paste', () => {
 
         it(test, () => {
             const dir = path.resolve(__dirname, test);
-            const input = readMetadata.sync(path.resolve(dir, 'input.yaml'));
-            const expectedPath = path.resolve(dir, 'expected.yaml');
-            const expected =
-                fs.existsSync(expectedPath) && readMetadata.sync(expectedPath);
 
             // eslint-disable-next-line
-            const runChange = require(path.resolve(dir, 'change.js')).default;
+            const {input, output, runChange} = require(path.resolve(dir, 'change.js'))
 
-            const valueInput = deserializeValue(input);
 
-            const newChange = runChange(plugin, valueInput.change());
+            const newChange = runChange(plugin, input.change());
 
-            if (expected) {
-                const newDocJSon = newChange.value.toJSON();
-                expect(newDocJSon).toEqual(deserializeValue(expected).toJSON());
-            }
+            const opts = { preserveSelection: true, preserveData: true };
+            const newDocJSon = newChange.value.toJSON(opts);
+            assert.deepEqual(newDocJSon, output.toJSON(opts));
         });
     });
 });

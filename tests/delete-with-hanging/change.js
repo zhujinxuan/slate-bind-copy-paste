@@ -1,12 +1,39 @@
-import { Range } from 'slate';
+/** @jsx h */
+/* eslint-disable react/void-dom-elements-no-children */
 
-export default function(plugin, change) {
-    const { document } = change.value;
-    const anchorNode = document.getDescendant('_anchor_');
-    const focusNode = document.getDescendant('_focus_');
-    const range = Range.create()
-        .moveAnchorToStartOf(anchorNode)
-        .moveFocusToStartOf(focusNode);
+import h from '../h';
+
+export function runChange(plugin, change) {
     const { deleteAtRange } = plugin;
-    return deleteAtRange(change, range);
+    return deleteAtRange(change, change.value.selection);
 }
+export const input = (
+    <value>
+        <document>
+            <paragraph>
+                <anchor />Before
+                <emoji />
+            </paragraph>
+            <image />
+            <paragraph>
+                <emoji>
+                    <focus />{' '}
+                </emoji>
+                After
+            </paragraph>
+        </document>
+    </value>
+);
+
+export const output = (
+    <value>
+        <document>
+            <paragraph>
+                <emoji>
+                    <cursor />{' '}
+                </emoji>
+                After
+            </paragraph>
+        </document>
+    </value>
+);

@@ -4,26 +4,24 @@ import h from '../h';
 
 function runChange(plugin, change) {
     const { deleteAtRange } = plugin;
-    return deleteAtRange(change, change.value.selection);
+    return deleteAtRange(change, change.value.selection, {
+        deleteStartText: false
+    });
 }
 
 const input = (
     <value>
         <document>
             <paragraph>
+                <anchor />
                 Before
-                <emoji>
-                    {' '}
-                    <anchor />
-                </emoji>
+                <emoji />
             </paragraph>
             <image />
             <paragraph>
-                <emoji>
-                    {' '}
-                    <focus />
-                </emoji>
+                <emoji />
                 After
+                <focus />
             </paragraph>
         </document>
     </value>
@@ -32,7 +30,8 @@ const output = (
     <value>
         <document>
             <paragraph>
-                Before<cursor />After
+                <cursor />
+                {''}
             </paragraph>
         </document>
     </value>
