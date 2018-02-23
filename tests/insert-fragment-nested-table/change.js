@@ -38,12 +38,12 @@ export const output = (
             <table>
                 <tr>
                     <td>Before</td>
-                    <td>Before Two</td>
+                    <td>
+                        Before Two<cursor />
+                    </td>
                 </tr>
             </table>
-            <paragraph>
-                <cursor />word
-            </paragraph>
+            <paragraph>word</paragraph>
         </document>
     </value>
 );

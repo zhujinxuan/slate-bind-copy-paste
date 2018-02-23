@@ -30,10 +30,10 @@ export const output = (
         <document>
             <paragraph>Before</paragraph>
             <image />
-            <paragraph>After</paragraph>
-            <image>
-                <cursor />{' '}
-            </image>
+            <paragraph>
+                After<cursor />
+            </paragraph>
+            <image />
         </document>
     </value>
 );
