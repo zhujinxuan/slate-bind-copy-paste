@@ -1,13 +1,35 @@
 {
-    "presets": [
-        "flow",
-        "env",
-        "stage-0",
-        "react"
-    ],
-   "env": {
-     "test": {
-       "plugins": ["transform-runtime"]
-     }
-   }
+  "presets": [
+    ["env", {
+      "modules": false
+    }],
+    "flow",
+    "react",
+    "stage-0"
+  ],
+  "plugins": ["external-helpers"],
+  "env": {
+    "webpack" : {
+      "presets": [
+        ["env", {
+          "modules": false
+        }],
+        "react",
+        "stage-0"
+      ],
+      "plugins": [
+        "transform-runtime",
+        "react-hot-loader/babel"
+      ]
+    },
+    "test": {
+      "presets": [
+         "env",
+         "flow",
+         "react",
+         "stage-0"
+       ],
+      "plugins": ["transform-runtime"]
+    }
+  }
 }

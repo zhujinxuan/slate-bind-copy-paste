@@ -6,7 +6,7 @@ import {
     insertFragmentAtRange as insertPlugin,
     deleteAtRange as deletePlugin,
     getFragmentAtRange as getPlugin
-} from '../lib';
+} from '../src';
 
 const plugin = {
     insertFragmentAtRange: insertPlugin.generate(),

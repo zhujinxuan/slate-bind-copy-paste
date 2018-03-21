@@ -20,7 +20,7 @@ export const input = (
     <value>
         <document>
             <image>
-                <cursor />{' '}
+                <cursor />
             </image>
         </document>
     </value>

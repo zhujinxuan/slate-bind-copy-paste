@@ -21,11 +21,9 @@ export const input = (
     <value>
         <document>
             <image />
-            <image>
-                <cursor />{' '}
-            </image>
+            <image />
             <paragraph>
-                <focus />word
+                <cursor />word
             </paragraph>
         </document>
     </value>
@@ -34,6 +32,7 @@ export const input = (
 export const output = (
     <value>
         <document>
+            <image />
             <image />
             <table>
                 <tr>
