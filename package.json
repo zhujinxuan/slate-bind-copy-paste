@@ -1,7 +1,7 @@
 {
   "name": "slate-bind-copy-paste",
   "description": "A Slate plugin to handle deleteAtRange, insertFragmentAtRange and getFragmentAtRange",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "Apache-2.0",
   "repository": "git://github.com/zhujinxuan/slate-bind-copy-paste.git",
   "main": "lib/slate-bind-copy-paste.js",
@@ -11,6 +11,7 @@
     "slate": ">0.32.4 <0.34.0"
   },
   "devDependencies": {
+    "assert": "^1.4.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
