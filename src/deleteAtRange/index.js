@@ -1,11 +1,13 @@
 // @flow
 import { type Change, Range } from 'slate';
+import Debug from 'debug';
 import { DeleteAtRangeOptions, type typeRule } from './rules/type';
 import atWholeDocument from './rules/atWholeDocument';
 import atDifferentText from './rules/atDifferentText';
 import atSameText from './rules/atSameText';
 import nextOperationOption from '../utils/nextOperationOption';
 
+const debug = new Debug('slate:changes:customized');
 function bindRules(
     rules: Array<typeRule>,
     index: number,
@@ -41,6 +43,7 @@ export default {
         range: Range,
         opts: Object = {}
     ): Change => {
+        debug('deleteAtRange', { change, range, opts });
         const {
             normalize = true,
             deleteStartText = false,

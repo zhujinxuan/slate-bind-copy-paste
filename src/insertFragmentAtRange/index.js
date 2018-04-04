@@ -1,5 +1,6 @@
 // @flow
 import { type Change, Range, type Document } from 'slate';
+import Debug from 'debug';
 import { InsertAtRangeOptions, type typeRule } from './rules/type';
 import firstParagraphAsText from './rules/firstParagraphAsText';
 import lastParagraphAsText from './rules/lastParagraphAsText';
@@ -7,6 +8,7 @@ import nodesAsBlocks from './rules/nodesAsBlocks';
 import nextOperationOption from '../utils/nextOperationOption';
 import deleteAtRangeGenerator from '../deleteAtRange';
 
+const debug = new Debug('slate:changes:customized');
 function bindRules(
     rules: Array<typeRule>,
     index: number,
@@ -40,8 +42,7 @@ const defaultRules: Array<typeRule> = [
 const deleteAtRangeDefault = deleteAtRangeGenerator.generate();
 
 type typeGenerateOptions = {
-    deleteAtRange?: (Change, Range, Object) => *,
-    select?: boolean
+    deleteAtRange?: (Change, Range, Object) => *
 };
 export default {
     rules: {
@@ -58,18 +59,16 @@ export default {
         fragment: Document,
         opts: Object = {}
     ): Change => {
+        debug('insertFragmentAtRange', { change, range, fragment, opts });
         const {
             normalize = true,
             lastNodeAsText = true,
             firstNodeAsText = true,
-            snapshot = true
+            snapshot = true,
+            select = range === change.value.selection
         } = opts;
         const { deleteAtRange = deleteAtRangeDefault } = generateOptions;
         const { isFocused } = change.value;
-        const defaultSelect =
-            range.startKey === change.value.startKey &&
-            range.endKey === change.value.endKey;
-        const { select = defaultSelect } = generateOptions;
         if (range.isBackward) {
             range = range.flip();
         }
