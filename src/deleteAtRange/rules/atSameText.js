@@ -37,7 +37,7 @@ const deleteAtSameText: typeRule = (rootDelete, change, range, opts, next) => {
             change.removeNodeByKey(removalKey, { normalize: false });
             return change;
         }
-        change.removeTextByKey(startKey, startOffset, endOffset, {
+        change.removeTextByKey(startKey, startOffset, endOffset - startOffset, {
             normalize: false
         });
         return change;
