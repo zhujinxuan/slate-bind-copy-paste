@@ -1,7 +1,7 @@
 {
   "name": "slate-bind-copy-paste",
   "description": "A Slate plugin to handle deleteAtRange, insertFragmentAtRange and getFragmentAtRange",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "license": "Apache-2.0",
   "repository": "git://github.com/zhujinxuan/slate-bind-copy-paste.git",
   "main": "lib/slate-bind-copy-paste.js",
@@ -72,6 +72,7 @@
     "build:rollup": "rollup --config ./support/rollup/config.js",
     "build:flow": "flow-copy-source -v ./src/ ./lib/",
     "build": "yarn build:rollup && yarn build:flow",
+    "prepublish": "yarn build",
     "lint": "eslint ./",
     "start": "webpack-dev-server --config ./support/webpack/config.js",
     "build-example": "cross-env NODE_ENV=production rollup --config ./support/rollup/config.js && cross-env NODE_ENV=production webpack --config support/webpack/config.js",
