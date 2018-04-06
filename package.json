@@ -6,10 +6,12 @@
   "repository": "git://github.com/zhujinxuan/slate-bind-copy-paste.git",
   "main": "lib/slate-bind-copy-paste.js",
   "module": "lib/slate-bind-copy-paste.es.js",
-  "dependencies": {
-    "debug": "^3.1.0",
+  "peerDependencies": {
     "immutable": "^3.8.2",
     "slate": ">0.32.4 <0.34.0"
+  },
+  "dependencies": {
+    "debug": "^3.1.0"
   },
   "devDependencies": {
     "assert": "^1.4.1",
