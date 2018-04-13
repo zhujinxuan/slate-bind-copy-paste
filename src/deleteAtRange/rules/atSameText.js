@@ -19,8 +19,9 @@ const deleteAtSameText: typeRule = (rootDelete, change, range, opts, next) => {
         }
     }
 
-    const ancestors = opts.startAncestors;
-    const voidParent = ancestors.findLast(n => n.isVoid);
+    const { document } = change.value;
+    const voidParent = document.getClosestVoid(startKey);
+    const ancestors = document.getAncestors(startKey);
 
     if (!voidParent) {
         if (

@@ -1,7 +1,6 @@
 // @flow
 import { type Node, Range, type Document } from 'slate';
 import { GetAtRangeOptions, type typeRule } from './rules/type';
-import nextOperationOption from '../utils/nextOperationOption';
 
 function bindRules(
     rules: Array<typeRule>,
@@ -18,8 +17,7 @@ function bindRules(
         bindRules(rules, index + 1, node, range, getOpts);
     const rootGetFragment = (n: Node, r: Range, o: GetAtRangeOptions) =>
         bindRules(rules, 0, n, r, o);
-    const nextOpts = nextOperationOption(node, range, opts);
-    return rule(rootGetFragment, node, range, nextOpts, next);
+    return rule(rootGetFragment, node, range, opts, next);
 }
 
 export default {

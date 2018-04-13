@@ -5,7 +5,6 @@ import { InsertAtRangeOptions, type typeRule } from './rules/type';
 import firstParagraphAsText from './rules/firstParagraphAsText';
 import lastParagraphAsText from './rules/lastParagraphAsText';
 import nodesAsBlocks from './rules/nodesAsBlocks';
-import nextOperationOption from '../utils/nextOperationOption';
 import deleteAtRangeGenerator from '../deleteAtRange';
 
 const debug = new Debug('slate:changes:customized');
@@ -29,8 +28,7 @@ function bindRules(
         f: Document,
         insOpt: InsertAtRangeOptions
     ) => bindRules(rules, 0, c, r, f, insOpt);
-    const nextOption = nextOperationOption(change.value.document, range, opts);
-    return rule(rootInsert, change, range, fragment, nextOption, next);
+    return rule(rootInsert, change, range, fragment, opts, next);
 }
 
 const defaultRules: Array<typeRule> = [

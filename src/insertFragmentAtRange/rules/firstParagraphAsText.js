@@ -54,8 +54,10 @@ const insertFirstParagraphAsText: typeRule = (
     opts = opts.set('firstNodeAsText', false);
 
     // If the startBlock is void
-    const ancestors = opts.startAncestors;
-    const voidParent = ancestors.findLast(n => n.isVoid);
+    const { startKey } = range;
+    const { document } = change.value;
+    const ancestors = document.getAncestors(startKey);
+    const voidParent = document.getClosestVoid(startKey);
     if (voidParent) {
         const container: Node = ancestors.find(
             (n, index) => voidParent === ancestors.get(index + 1)

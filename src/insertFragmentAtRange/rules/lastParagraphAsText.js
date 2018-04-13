@@ -69,8 +69,11 @@ const insertLastParagraphAsText: typeRule = (
     }
 
     opts = opts.set('lastNodeAsText', false);
+    const { endKey } = range;
+    const { document } = change.value;
 
-    const voidParent = opts.endAncestors.findLast(n => n.isVoid);
+    const voidParent = document.getClosestVoid(endKey);
+
     if (voidParent) {
         if (voidParent.object === 'block') {
             return rootInsert(change, range, fragment, opts);

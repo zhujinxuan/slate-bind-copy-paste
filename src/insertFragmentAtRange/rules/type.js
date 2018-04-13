@@ -1,23 +1,13 @@
 // @flow
-import { List, Record } from 'immutable';
-import { type Node, type Change, type Range, type Document, Text } from 'slate';
+import { Record } from 'immutable';
+import { type Change, type Range, type Document } from 'slate';
 
 class InsertAtRangeOptions extends Record({
     lastNodeAsText: true,
-    firstNodeAsText: true,
-    startText: Text.create(''),
-    endText: Text.create(''),
-    startKey: '',
-    endKey: '',
-    startAncestors: List.of(),
-    endAncestors: List.of()
+    firstNodeAsText: true
 }) {
     lastNodeAsText: boolean;
     firstNodeAsText: boolean;
-    startText: Text;
-    endText: Text;
-    startAncestors: List<Node>;
-    endAncestors: List<Node>;
     merge: Object => InsertAtRangeOptions;
     set: (string, *) => InsertAtRangeOptions;
 }

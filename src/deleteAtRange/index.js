@@ -5,7 +5,6 @@ import { DeleteAtRangeOptions, type typeRule } from './rules/type';
 import atWholeDocument from './rules/atWholeDocument';
 import atDifferentText from './rules/atDifferentText';
 import atSameText from './rules/atSameText';
-import nextOperationOption from '../utils/nextOperationOption';
 
 const debug = new Debug('slate:changes:customized');
 function bindRules(
@@ -26,8 +25,7 @@ function bindRules(
         r: Range,
         removeOptions: DeleteAtRangeOptions
     ) => bindRules(rules, 0, n, r, removeOptions);
-    const nextOption = nextOperationOption(change.value.document, range, opts);
-    return rule(rootDeleteAtRange, change, range, nextOption, next);
+    return rule(rootDeleteAtRange, change, range, opts, next);
 }
 
 const defaultRules: Array<typeRule> = [
