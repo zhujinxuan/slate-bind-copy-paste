@@ -41,3 +41,7 @@ example/build
 dist
 lib
 example/bundle.js
+
+
+# Editor files
+.tern-port

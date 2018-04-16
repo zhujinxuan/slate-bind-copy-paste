@@ -8,13 +8,9 @@ const deleteAtSameText: typeRule = (rootDelete, change, range, opts, next) => {
         return next(opts);
     }
 
-    const { startText } = opts;
     if (startOffset === endOffset) {
         // disable change for voidParent when the range is collapsed
         if (!deleteStartText || !deleteEndText) {
-            return change;
-        }
-        if (startOffset !== 0 && startText.text.length !== 0) {
             return change;
         }
     }
@@ -22,6 +18,7 @@ const deleteAtSameText: typeRule = (rootDelete, change, range, opts, next) => {
     const { document } = change.value;
     const voidParent = document.getClosestVoid(startKey);
     const ancestors = document.getAncestors(startKey);
+    const startText = document.getDescendant(startKey);
 
     if (!voidParent) {
         if (
