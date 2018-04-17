@@ -37,7 +37,7 @@ const insertNodesAsBlocks: typeRule = (
                 splitBlock.key
             );
             if (!nextBlock) {
-                const parent = change.value.document.getParent(splitBlock);
+                const parent = change.value.document.getParent(splitBlock.key);
                 const nextParent = parent.set(
                     'nodes',
                     parent.nodes.concat(fragment.nodes)
